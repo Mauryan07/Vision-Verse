@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/editProduct.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="maindiv">
+        <div class="nav">
+            <div class="logodiv">
+                <img src="/aa.jpg" alt="" class="pic">
+                <h2 class="title">VISION-VERSE</h2>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://<%= ipAddress %>:3000/dashboard">
+        <h1 class="rotate"> &#10132 </h1>
+    </a>
+
+
+    <div class="box-card">
+        <div id="html-content-holder" class="sticker">
+            <img class="qr" src="/pattern-aa.png" alt="">
+            <img class="qr" src="<%= code %>" alt="" srcset="">
+        </div>
+        <input download="download.png" class="action-btnn" id="btn-Preview-Image" type="button" value="Download" />
+
+
+        <!-- <button id="savebtn">Save</button> -->
+
+        <div class="info">
+            <div class="upper-lower">
+                <h1 class="productID">Product ID -</h1>
+                <h1 class="productID">
+                    <%= product._id %>
+                </h1>
+            </div>
+            <div class="upper-lower">
+                <h1 class="productInfo">Product Last Updated At-</h1>
+                <h1 class="productInfo date">
+                    <%= moment(product.updatedAt).format("MMM DD, YYYY hh:mm A") %>
+                </h1>
+                <h1 class="productInfo">Product Created At -</h1>
+                <h1 class="productInfo date">
+                    <%= moment(product.createdAt).format("MMM DD, YYYY hh:mm A") %>
+                </h1>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="box-edit">
+        <form action="/product/<%= product._id %>" method="post">
+            <!-- <input type="text" name="name" class="tbox" placeholder="Product Name" value="<%= product.name %>" required> <br>
+            <input type="text" name="info" class="tbox" placeholder="Product Info" value="<%= product.info %>"> <br>
+            <input type="text" name="price" class="tbox" placeholder="Product price" value="<%= product.price %>"> <br>
+            <input type="text" name="model" class="tbox" placeholder="Product Model No" value="<%= product.model %>"> <br>
+
+            <input type="password" class="tbox" name="password" placeholder="Product password" value="<%= product.password %>"> <br>
+
+            <input type="text" class="tbox" name="external_link" placeholder="Product external_link" value="<%= product.external_link %>"> <br>-->
+            <label class="name">Item Name</label><br>
+            <input type="text" name="name" placeholder="Enter Item Name" class="tbox" value="<%= product.name %>"
+                required><br><br>
+
+
+
+            <i class="fa fa-barcode iconp" aria-hidden="true"></i>
+            <label class="name">Item - Model No.</label>
+            <input type="text" name="model" placeholder="Model No." value="<%= product.model %>" class="tbox one"
+                id="small"><br><br>
+
+            <i class="fa fa-info-circle iconp" aria-hidden="true"></i>
+            <label class="name">Item Information</label><br>
+            <textarea name="info" rows="2" placeholder="Product Information" cols="22" class="tbox"
+                id="smallone"> <%= product.info %></textarea><br><br>
+            <!-- <input type="text-a" placeholder="Enter BIO" class="tbox" required><br><br> -->
+
+
+
+            <i class="fa fa-money iconp" aria-hidden="true"></i>
+            <label class="name">Price</label><br>
+            <input type="number" name="price" placeholder="Enter Selling Price in &#8377 " value="<%= product.price %>"
+                class="tbox"><br><br>
+
+            <i class="fa fa-link iconp" aria-hidden="true"></i>
+            <label class="name">External Link</label><br>
+            <input type="text" name="external_link" value="<%= product.external_link %>"
+                placeholder="Enter External URL" class="tbox"><br><br>
+
+            <i class="fa fa-unlock-alt iconp" aria-hidden="true"></i>
+            <label class="name">Password </label> <br>
+            <input id="pswd" name="password" type="password" value="<%= product.password %>"
+                placeholder="Enter Password" class="tbox"><br><br>
+
+
+            <input type="text" name="user_id" value="<%= user._id %>" hidden>
+            <input type="submit" value="Save Changes" class="action-btnn">
+        </form>
+
+        <% if (product.image){ %>
+            <% if (product.type){ %>
+            <input  class="action-btnn"  type="button" value="View Model" onclick="window.location = '/viewModel/<%= product.image %>';" />
+            <form action="/product/deleteImage" method="post" enctype="multipart/form-data">
+                <input type="text" name="id" value="<%= product._id %>" hidden>
+                <div class="end">
+                    <input type="submit" value="Delete Model" class="action-btnn delete-btnn smallBtn">
+
+                </div>
+            </form>
+            <% } else { %>
+            <div class="center">
+                <img src="/data/<%= product.image %>" srcset="" alt="i" style="width: 200px;">
+
+            </div>
+            <form action="/product/deleteImage" method="post" enctype="multipart/form-data">
+                <input type="text" name="id" value="<%= product._id %>" hidden>
+                <div class="end">
+                    <input type="submit" value="Delete Image" class="action-btnn delete-btnn smallBtn">
+
+                </div>
+            </form>
+            <% } %>
+            
+
+            <% } else { %>
+                <form action="/product/addImage" method="post" enctype="multipart/form-data">
+                    <input type="text" name="id" value="<%= product._id %>" hidden>
+                    <i class="fa fa-upload iconp" aria-hidden="true"></i>
+                    <label class="name">Item Image / 3D Model</label><br>
+                    <input type="file" accept="image/png, image/jpeg, .gltf,.glb" name="testImage"><br><br>
+                    <div class="end">
+
+                        <input type="submit" value="Save Image / GLTF 3D Model" class="action-btnn  ">
+                    </div>
+
+                </form>
+
+                <% } %>
+                    <form action="/product/delete/<%= product._id %>" method="get">
+                        <input type="submit" class="action-btnn delete-btnn" value="Delete Product">
+                    </form>
+    </div>
+    <br><br><br>
+    <script>
+        $(document).ready(function () {
+
+
+            var element = $("#html-content-holder"); // global variable
+            var getCanvas; // global variable
+            var newData;
+
+            $("#btn-Preview-Image").on('click', function () {
+                html2canvas(element, {
+
+                    onrendered: function (canvas) {
+                        getCanvas = canvas;
+                        var imgageData = getCanvas.toDataURL("image/png");
+                        var a = document.createElement("a");
+                        a.href = imgageData; //Image Base64 Goes here
+                        a.download = "Image.png"; //File name Here
+                        a.click(); //Downloaded file
+                    }
+                });
+            });
+
+
+        });
+    </script>
+
+
+
+</body>
+
+</html>

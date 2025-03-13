@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/editProduct.css"> -->
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.1.7/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+
+    <style>
+        canvas {
+            height: 90vh;
+        }
+        .infodiv{
+            width: 100%;
+            height: auto;
+            z-index: 1;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+        .infoo{
+            font-size: 1.3rem;
+            font-weight: 1000;
+            text-align: left;
+            font-family: sans-serif;
+            margin: 5px;
+            padding: 0;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .infoinfo{
+            font-size: 1rem;
+            font-weight: 1000;
+            text-align: justify;
+            font-family: sans-serif;
+            margin: 5px 15px 15px;
+            
+            padding: 0;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .detaisdiv {
+            width: 100%;
+            height: auto;
+            padding: 20px 0;
+            z-index: 1;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+        #detailsBtn{
+            border-radius: 20px;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            background-color: blueviolet;
+            border: none;
+        }
+    </style>
+    <title>Login</title>
+</head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+    <div style="width: 100% ; height: 100%; z-index: -2;">
+        <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; ">
+            <!-- Marker for tracking -->
+            <a-marker type="pattern" url="/pattern-aa.patt">
+                <!-- Plane to display the image -->
+                <% if (product.image){ %>
+
+                    <a-plane id="imagePlane" position="0 0 0" rotation="-90 0 0" width="3" height="3"
+                        material="shader: flat; scale: 2 2 2; src:/data/<%= product.image %>"></a-plane>
+
+                    <% }else{ %>
+                        <a-plane id="imagePlane" position="0 0 0" rotation="-90 0 0" width="3" height="3"
+                            material="shader: flat; scale: 2 2 2; src:/pattern-aa.png"></a-plane>
+
+                        <% } %>
+
+            </a-marker>
+            <!-- Camera to view the scene -->
+            <a-entity camera></a-entity>
+        </a-scene>
+    </div>
+    <div class="detaisdiv" >
+        <h1 style="text-align: right; margin:0 12px; padding: 0;" ><a href="/product/reviews/<%= product._id %>"><img style=" margin: 0;width: 60px; filter: drop-shadow(2px 5px 3px #000);" src="/rev.png" alt="" srcset=""></a></h1>
+        <p class="infoinfo"><%= product.info %></p>
+        <form action="/productdetails" method="post"
+            style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <input type="text" name="id" value="<%= product._id %>" hidden>
+            <input id="detailsBtn" type="submit" value="View Full Details">
+        </form>
+    </div>
+    <div class="infodiv">
+        <p class="infoo">Product Name- <%= product.name %></p>
+        <p class="infoo">Price- <%= product.price %> &#8377</p>
+    </div>
+
+
+    <!-- <div class="maindiv">
+        <div class="nav">
+            <div class="logodiv">
+                <img src="/aa.jpg" alt="" class="pic">
+                <h2 class="title">VISION-VERSE</h2>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="box">
+        <h2 class="productName">
+            <span class="titlei"> Product Name- </span>
+            <span class="info">
+                <%= product.name %>
+            </span>
+        </h2>
+        <br>
+        <div class="image">
+            <% if (product.image){ %>
+
+                <img src="/data/<%= product.image %>" srcset="" alt="i">
+
+                <% } %>
+        </div>
+        <br>
+
+        <h2>
+            <span class="titlei"> ID- </span>
+            <span class="info">
+                <%= product._id %>
+            </span>
+        </h2>
+
+        <h2>
+            <span class="titlei">Model No.- </span>
+            <span class="info">
+                <%= product.model %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei">
+                Product Information- </span>
+            <span class="info">
+                <%= product.info %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei"> Price- </span>
+            <span class="info">
+                <%= product.price %> &#8377
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei"> External Link-</span>
+            <span class="info"> <a target="_blank" href="https://<%= product.external_link %>">
+                    <%= product.external_link %>
+                </a> </span>
+        </h2>
+
+        <h2>
+            <span class="titlei"> Owner Username-</span>
+            <span class="info">
+                <%= user.username %>
+            </span>
+
+        </h2>
+        <h2>
+            <span class="titlei"> Owner Email-</span>
+
+            <span class="info">
+                <%= user.email %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei date"> Product Created At- </span>
+            <span class="info date">
+                <%= moment(product.createdAt).format("MMM DD, YYYY hh:mm A") %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei date"> Last Updated At- </span>
+            <span class="info date">
+                <%= moment(product.updatedAt).format("MMM DD, YYYY hh:mm A") %>
+            </span>
+        </h2>
+
+
+
+
+    </div>
+ -->
+
+
+
+
+
+
+</body>
+
+</html>

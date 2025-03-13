@@ -1,0 +1,137 @@
+.box-edit {
+    background: #f5f5f7;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 10px 4%;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    
+}
+.productID{
+    font-size: 1rem;
+}
+.productInfo{
+    font-size: 0.8rem;
+    text-align: end;
+}
+.upper-lower{
+    margin: 10px 0;
+
+}
+.action-btnn{
+    border: none;
+    background: #0071e3;
+    color: white;
+    padding: 10px;
+    margin: 10px 5%;
+    width: 90%;
+    border-radius: 10px;
+}
+.delete-btnn{
+    background: red;
+}
+.date{
+    color: #0071e3;
+    text-align: end;
+}
+.qr{
+    margin: 5px;
+    display: inline;
+    padding: 0;
+    width: 150px;
+    border-radius: 20px;
+}
+.box-card{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #f5f5f7;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin: 10px 4%;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+}
+.sticker{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 3px dashed gray;
+    padding: 5px;
+    border-radius: 20px;
+}
+.info{
+    display: inline-flexbox;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.titlei{
+    color: #6e6e73;
+    font-size: 1.1rem;
+    
+
+}
+
+.info{
+    color: #1d1d1f;
+    font-size: 1rem;
+    
+}
+
+.image img{
+    width: 250px;
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+}
+.date{
+    font-size: 0.8rem;
+}
+.box h2{
+    margin: 10px;
+}
+
+.productName{
+    border-radius: 10px;
+    background: #0071e3;
+    padding: 10px;
+    text-align: center;
+    
+}
+.productName span{
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.rotate{
+    display: inline-block;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    margin: 0;
+    padding: 0 10px;
+    color: #1d1d1f;
+    line-height: 0.9;
+}
+
+.smallBtn{
+    width: 40%;
+    text-align: center;
+    
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.end{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}

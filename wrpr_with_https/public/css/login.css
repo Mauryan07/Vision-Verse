@@ -1,0 +1,65 @@
+*{
+    font-family: "Poppins";
+}
+
+.logodiv{
+    margin-bottom: 15px;
+}
+.pic{
+    height: 100px;
+    mix-blend-mode: multiply;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+.maindiv{
+    background: #dde5f4;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.boxdiv{
+    background: #f1f7fe;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 30px;
+}
+
+.tbox{
+    margin: 2px;
+    padding: 10px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 10px ;
+}
+
+.name{
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.iconp{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.butt{
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background: #5E5DF0;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: large;
+    box-shadow: 2px 2px 7px #aaa;
+    text-decoration: none;
+}

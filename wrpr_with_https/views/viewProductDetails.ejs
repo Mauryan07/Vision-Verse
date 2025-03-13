@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/editProduct.css">
+
+
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="maindiv">
+        <div class="nav">
+            <div class="logodiv">
+                <img src="/aa.jpg" alt="" class="pic">
+                <h2 class="title">VISION-VERSE</h2>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="box">
+        <h2 class="productName">
+            <span class="titlei"> Product Name- </span>
+            <span class="info">
+                <%= product.name %>
+            </span>
+        </h2>
+        <br>
+        <div class="image">
+            <% if (product.image){ %>
+                <% if (product.type){ %>
+                    <input  class="action-btnn"  type="button" value="View Model" onclick="window.location = '/viewModel/<%= product.image %>';" />
+                    
+                    <% } else { %>
+                    <div class="center">
+                        <img src="/data/<%= product.image %>" srcset="" alt="i" style="width: 200px;">
+                    </div>
+                
+                    <% } %>
+                <% } %>
+        </div>
+        <br>
+
+        <h2>
+            <span class="titlei"> ID- </span>
+            <span class="info">
+                <%= product._id %>
+            </span>
+        </h2>
+
+        <h2>
+            <span class="titlei">Model No.- </span>
+            <span class="info">
+                <%= product.model %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei">
+                Product Information- </span>
+            <span class="info">
+                <%= product.info %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei"> Price- </span>
+            <span class="info">
+                <%= product.price %> &#8377
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei"> External Link-</span>
+            <span class="info"> <a target="_blank" href="https://<%= product.external_link %>">
+                    <%= product.external_link %>
+                </a> </span>
+        </h2>
+
+        <h2>
+            <span class="titlei"> Owner Username-</span>
+            <span class="info">
+                <%= user.username %>
+            </span>
+
+        </h2>
+        <h2>
+            <span class="titlei"> Owner Email-</span>
+
+            <span class="info">
+                <%= user.email %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei date"> Product Created At- </span>
+            <span class="info date">
+                <%= moment(product.createdAt).format("MMM DD, YYYY hh:mm A") %>
+            </span>
+        </h2>
+        <h2>
+            <span class="titlei date"> Last Updated At- </span>
+            <span class="info date">
+                <%= moment(product.updatedAt).format("MMM DD, YYYY hh:mm A") %>
+            </span>
+        </h2>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
