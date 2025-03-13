@@ -1,3 +1,4 @@
+
 # Vision Verse
 
 Vision Verse is an innovative web application that transforms static QR codes into dynamic, interactive gateways for augmented reality (AR) content. This project leverages AR and spatial computing technologies to blend the physical and digital worlds, enabling immersive learning, marketing, and interactive experiences.
@@ -34,3 +35,43 @@ Vision Verse is an innovative web application that transforms static QR codes in
    ```bash
    git clone https://github.com/yourusername/vision-verse.git
    cd vision-verse
+   ```
+
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment:**
+   - Set your MongoDB connection string in the configuration.
+   - Place your SSL certificate (`cert.pem`) and key (`key.pem`) in the project root.
+
+4. **Generate SSL Certificates (if needed):**
+   ```bash
+   openssl req -nodes -new -x509 -keyout key.pem -out cert.pem
+   ```
+
+## Usage
+
+1. **Start the Server:**
+   ```bash
+   node index.js
+   ```
+2. **Access the Application:**
+   - Open your browser and navigate to `https://<your-system-ip>:3000`.
+
+## Deployment on Raspberry Pi Zero 2W
+
+Vision Verse is optimized to run efficiently on a Raspberry Pi Zero 2W, demonstrating its capability to operate on low-power, resource‑constrained hardware without any issues.
+
+## Research Background
+
+This project is inspired by the research paper:  
+**"Vision Verse: Engaging Learners through AR for Interactive Learning and Marketing"**  
+The paper explores transforming static QR codes into dynamic, data-rich interfaces using AR, enhancing applications in education, retail, tourism, and entertainment.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
