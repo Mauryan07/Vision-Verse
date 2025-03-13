@@ -10,7 +10,6 @@ Vision Verse is an innovative web application that transforms static QR codes in
 - [Installation](#installation)
 - [Usage](#usage)
 - [Deployment on Raspberry Pi Zero 2W](#deployment-on-raspberry-pi-zero-2w)
-- [Research Background](#research-background)
 - [License](#license)
 
 ## Features
